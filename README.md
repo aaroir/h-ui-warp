@@ -63,6 +63,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/apapar/h-ui-warp/main/ssl.sh -
 /root/private.key
 ```
 
+![root](./docs/images/root.png)
+
 **نصب پنل هیستریا2**
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/apapar/h-ui-warp/main/install.sh)
@@ -83,6 +85,7 @@ wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh w
  Local Socks5: 127.0.0.1:40000(پورت ممکن است متفاوت باشد)<br>
 حال میتوانید در پنل هیستریا یک خروجی ساکس5 بر روی این آیپی و پورت تعریف کنید
 
+![socks](./docs/images/socks.png)
 
 ## اطلاعات پیشفرض
 
