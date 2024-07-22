@@ -14,7 +14,7 @@ init_var() {
   HUI_DATA_SYSTEMD="/usr/local/h-ui/"
 
   h_ui_port=8081
-  h_ui_time_zone=Asia/Shanghai
+  h_ui_time_zone=Asia/Tehran
 }
 
 echo_content() {
@@ -205,8 +205,8 @@ install_h_ui_docker() {
 
   read -r -p "Please enter the port of H UI (default: 8081): " h_ui_port
   [[ -z "${h_ui_port}" ]] && h_ui_port="8081"
-  read -r -p "Please enter the Time zone of H UI (default: Asia/Shanghai): " h_ui_time_zone
-  [[ -z "${h_ui_time_zone}" ]] && h_ui_time_zone="Asia/Shanghai"
+  read -r -p "Please enter the Time zone of H UI (default: Asia/Tehran): " h_ui_time_zone
+  [[ -z "${h_ui_time_zone}" ]] && h_ui_time_zone="Asia/Tehran"
 
   docker pull jonssonyan/h-ui &&
     docker run -d --cap-add=NET_ADMIN \
@@ -275,8 +275,8 @@ install_h_ui_systemd() {
 
   read -r -p "Please enter the port of H UI (default: 8081): " h_ui_port
   [[ -z "${h_ui_port}" ]] && h_ui_port="8081"
-  read -r -p "Please enter the Time zone of H UI (default: Asia/Shanghai): " h_ui_time_zone
-  [[ -z "${h_ui_time_zone}" ]] && h_ui_time_zone="Asia/Shanghai"
+  read -r -p "Please enter the Time zone of H UI (default: Asia/Tehran): " h_ui_time_zone
+  [[ -z "${h_ui_time_zone}" ]] && h_ui_time_zone="Asia/Tehran"
 
   timedatectl set-timezone ${h_ui_time_zone} && timedatectl set-local-rtc 0
   systemctl restart rsyslog
