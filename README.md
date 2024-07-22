@@ -55,12 +55,19 @@ apt update
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/apapar/h-ui-warp/main/ssl.sh --ipv4)
 ```
+مسیر پیشفرض گواهی ها : <br>
+```bash
+/root/cert.crt
+```
+```bash
+/root/private.key
+```
 
 **نصب پنل هیستریا2**
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/apapar/h-ui-warp/main/install.sh)
 ```
-توجه نمایید برای راه اندازی هسته هیسترا باید از داخل پنل، قسمت مدیریت هیستریا<br>
+توجه نمایید برای راه اندازی هسته هیستریا2 باید از داخل پنل، قسمت مدیریت هیستریا<br>
 گزینه های Obfuscation و TLS را تکمیل نمایید
 
 **نصب وارپ بصورت پروکسی (پیشنهادی)**
@@ -70,18 +77,11 @@ wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh w
 راهنمای نصب وارپ : <br>
 در مرحله انتخاب پورت پیشنهاد میشود  اینتر برنید و از پورت پیش فرض استفاده کنید<br>
 در مراحل بعد گزینه warp+ را انتخاب کنید<br>
-از ربات تلگرامی @generatewarpplusbot یک کلید دریافت و در این قسمت جایگزاری کنید<br>
+از ربات تلگرامی @generatewarpplusbot یک کلید دریافت و در این قسمت جایگذاری کنید<br>
 اگر مراحل درست طی شود با این پیام مواجه می شوید<br>
  Local Socks5: 127.0.0.1:40000(پورت ممکن است متفاوت باشد)<br>
 حال میتوانید در پنل هیستریا یک خروجی ساکس5 بر روی این آیپی و پورت تعریف کنید
 
-
-حذف پنل
-
-```bash
-systemctl stop h-ui
-rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
-```
 
 ## اطلاعات پیشفرض
 
@@ -110,6 +110,13 @@ rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
 ## داکیومنت هیستریا2
 
 https://v2.hysteria.network/docs/getting-started/3rd-party-apps/
+
+## حذف پنل
+
+```bash
+systemctl stop h-ui
+rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
+```
 
 
 ## یوتوب سازنده سیستم
