@@ -33,7 +33,7 @@ Just the panel for Hysteria2
  - مدیریت تنظیمات Hysteria2 و نسخه های Hysteria2
  - تغییر آسان پورت اتصال و ضریب مصرفی ترافیک
 - صفحه نمایش گزارش های سیستم و گزارش‌های Hysteria2
- - پشتیبانی از زبان های انگلیسی، 简体中文
+ - پشتیبانی از زبان های فارسی ، English & 简体中文
  - طراحی واکنشگرا، پشتیبانی از حالت شب، تم های صفحه سفارشی
  - ویژگی های بیشتر در انتظار شما برای کشف
 
@@ -43,7 +43,7 @@ CentOS 8+/Ubuntu 20+/Debian 11+
 
 CPU: x86_64/amd64 arm64/aarch64
 
-حافظه : ≥ 256MB
+RAM: ≥ 256MB
 
 ## نصب
 
@@ -158,14 +158,14 @@ rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
     ```
 
 - میتوانید یک شتابدهنده شبکه نصب کنید
-    - [TCP Brutal](https://github.com/apernet/tcp-brutal) (推荐)
+    - [TCP Brutal](https://github.com/apernet/tcp-brutal) (توصیه شده)
     - [teddysun/across#bbrsh](https://github.com/teddysun/across#bbrsh)
     - [Chikage0o0/Linux-NetSpeed](https://github.com/ylx2016/Linux-NetSpeed)
     - [ylx2016/Linux-NetSpeed](https://github.com/ylx2016/Linux-NetSpeed)
 
 ## داکیومنت هیستریا2
 
-https://v2.hysteria.network/zh/docs/getting-started/3rd-party-apps/
+https://v2.hysteria.network/docs/getting-started/3rd-party-apps/
 
 ## توسعه سیستم
 
