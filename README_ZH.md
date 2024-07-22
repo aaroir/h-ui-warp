@@ -4,7 +4,7 @@
 
 <h1 align="center">H UI</h1>
 
-[English](README.md) / 简体中文
+[فارسی](README.md) / 简体中文 / [English](README_EN.md)
 
 Just the panel for Hysteria2
 
