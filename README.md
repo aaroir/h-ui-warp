@@ -4,11 +4,11 @@
 
 <h1 align="center">H UI</h1>
 
-English / [简体中文](README_ZH.md)
+[English](README_EN.md) / [简体中文](README_ZH.md) / فارسی
 
 Just the panel for Hysteria2
 
-仅仅是 Hysteria2 的面板
+پنل Hysteria2
 
 <p>
 <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://img.shields.io/github/license/jonssonyan/h-ui" alt="License: GPL-3.0"></a>
@@ -22,31 +22,32 @@ Just the panel for Hysteria2
 
 </div>
 
-## Features
+## امکانات 
 
-- Lightweight, low resource usage, easy to deploy
-- Monitor system status and Hysteria2 status
-- Limit user traffic, user online status, force users to log off, number of online users, reset user traffic
-- Limit the number of users' online devices at the same time, the number of online devices
-- User subscription link, node URL, import and export users
-- Managing Hysteria2 configurations and Hysteria2 versions
-- Change the Web port, modify the Hysteria2 traffic multiplier
-- View, import, and export system logs and Hysteria2 logs
-- I18n: English, 简体中文
-- Page adaptation, support night mode, custom page themes
-- More features waiting for you to discover
 
-## Recommended OS
+- سبک وزن، استفاده کم از منابع، نصب آسان
+ - نظارت کامل بر وضعیت سیستم و Hysteria2 
+- اعمال محدودیت حجمی ، تاریخ و تعداد دستگاه برای کاربران
+ - بازنشانی حجم مصرفی کاربران
+- تهیه پشتیبان از کاربران
+ - مدیریت تنظیمات Hysteria2 و نسخه های Hysteria2
+ - تغییر آسان پورت اتصال و ضریب مصرفی ترافیک
+- صفحه نمایش گزارش های سیستم و گزارش‌های Hysteria2
+ - پشتیبانی از زبان های انگلیسی، 简体中文
+ - طراحی واکنشگرا، پشتیبانی از حالت شب، تم های صفحه سفارشی
+ - ویژگی های بیشتر در انتظار شما برای کشف
 
-OS: CentOS 8+/Ubuntu 20+/Debian 11+
+## سیستم عامل مورد نیاز
+
+CentOS 8+/Ubuntu 20+/Debian 11+
 
 CPU: x86_64/amd64 arm64/aarch64
 
-Memory: ≥ 256MB
+حافظه : ≥ 256MB
 
-## Deployment
+## نصب
 
-### Quick Install (Recommended)
+### نصب سریع (پیشنهادی)
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install.sh)
@@ -54,7 +55,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install
 
 ### Docker
 
-1. Install Docker
+1. نصب داکر
 
    https://docs.docker.com/engine/install/
 
@@ -62,7 +63,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install
    bash <(curl -fsSL https://get.docker.com)
    ```
 
-2. Start a container
+2. راه اندازی
 
    ```bash
    docker pull jonssonyan/h-ui
@@ -77,7 +78,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install
      jonssonyan/h-ui
    ```
 
-   Custom web port, default is 8081
+   تنظیم پورت پنل (8081 پیشنهادی)
 
    ```bash
    docker run -d --cap-add=NET_ADMIN \
@@ -91,13 +92,13 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install
      ./h-ui -p 8081
    ```
 
-   Set the time zone, default is Asia/Shanghai
+   تنظیم منطقه زمانی، پیش فرض Asia/Tehran
 
    ```bash
    docker run -d --cap-add=NET_ADMIN \
      --name h-ui --restart always \
      --network=host \
-     -e TZ=Asia/Shanghai \
+     -e TZ=Asia/Tehran \
      -v /h-ui/bin:/h-ui/bin \
      -v /h-ui/data:/h-ui/data \
      -v /h-ui/export:/h-ui/export \
@@ -105,7 +106,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install
      jonssonyan/h-ui
    ```
 
-Uninstall
+حذف پنل
 
 ```bash
 docker rm -f h-ui
@@ -115,59 +116,58 @@ rm -rf /h-ui
 
 ### systemd
 
-Executable files: https://github.com/jonssonyan/h-ui/releases
+دانلود فایل پنل: https://github.com/jonssonyan/h-ui/releases
 
 ```bash
 mkdir -p /usr/local/h-ui/
 curl -fsSL https://github.com/jonssonyan/h-ui/releases/latest/download/h-ui-linux-amd64 -o /usr/local/h-ui/h-ui && chmod +x /usr/local/h-ui/h-ui
 curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/h-ui.service -o /etc/systemd/system/h-ui.service
-# Custom web port, default is 8081
+# پورت پنل، 8081 پیشنهادی
 # sed -i "s|^ExecStart=.*|ExecStart=/usr/local/h-ui/h-ui -p 8081|" "/etc/systemd/system/h-ui.service"
 systemctl daemon-reload
 systemctl enable h-ui
 systemctl restart h-ui
 ```
 
-Uninstall
+حذف پنل
 
 ```bash
 systemctl stop h-ui
 rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
 ```
 
-## Default Installation Information
+## اطلاعات پیشفرض
 
-- Panel Port: 8081
-- Username/Password: sysadmin
+- پورت پنل : 8081
+- نام کاربری و رمز عبور : sysadmin
 
-## System Upgrade
+## بروزرسانی سیستم
 
-Export the user, system configuration, and Hysteria2 configuration in the management background, redeploy the latest
-version of h-ui, and import the data into the management background after the deployment is complete.
+ابتدا یک فایل پشتیبان از کاربران تهیه کنید، سپس نسخه جدید را نصب کنید
 
-## FAQ
+## داکیومنت
 
-[English > FAQ](./docs/FAQ.md)
+[فارسی > FAQ](./docs/FAQ.md)
 
-## Performance Optimization
+## بهینه سازی عملکرد
 
-- Scheduled server restart
+- میتوانید یک کرون ری استارت تنظیم کنید
 
     ```bash
     0 4 * * * /sbin/reboot
     ```
 
-- Install Network Accelerator
-    - [TCP Brutal](https://github.com/apernet/tcp-brutal) (Recommended)
+- میتوانید یک شتابدهنده شبکه نصب کنید
+    - [TCP Brutal](https://github.com/apernet/tcp-brutal) (推荐)
     - [teddysun/across#bbrsh](https://github.com/teddysun/across#bbrsh)
     - [Chikage0o0/Linux-NetSpeed](https://github.com/ylx2016/Linux-NetSpeed)
     - [ylx2016/Linux-NetSpeed](https://github.com/ylx2016/Linux-NetSpeed)
 
-## Client
+## داکیومنت هیستریا2
 
-https://v2.hysteria.network/docs/getting-started/3rd-party-apps/
+https://v2.hysteria.network/zh/docs/getting-started/3rd-party-apps/
 
-## Development
+## توسعه سیستم
 
 Go >= 1.20, Node.js >= 18.12.0
 
@@ -185,7 +185,7 @@ Go >= 1.20, Node.js >= 18.12.0
    go run main.go
    ```
 
-## Build
+## ساختن
 
 - frontend
 
@@ -199,22 +199,15 @@ Go >= 1.20, Node.js >= 18.12.0
 
   Mac/Linux: [build.sh](build.sh)
 
-## Other
+## یوتوب سازنده سیستم
 
-You can subscribe to my channel on YouTube: https://www.youtube.com/@jonssonyan
+https://www.youtube.com/@jonssonyan
 
-## Contributors
 
-Thanks to everyone who contributed to this project.
-
-<a href="https://github.com/jonssonyan/h-ui/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=jonssonyan/h-ui" />
-</a>
-
-## Star History
+## تاریخچه ستاره
 
 [![Star History Chart](https://api.star-history.com/svg?repos=jonssonyan/h-ui&type=Date)](https://star-history.com/#jonssonyan/h-ui&Date)
 
-## License
+## لایسنس
 
 [GPL-3.0](LICENSE)
