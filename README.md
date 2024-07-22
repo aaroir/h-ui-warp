@@ -86,8 +86,8 @@ wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh w
 
 ## اطلاعات پیشفرض
 
-- پورت پنل : 8081
-- نام کاربری و رمز عبور : sysadmin
+**پورت پیشفرض پنل : 8081**
+**نام کاربری و رمز عبور پیشفرض : sysadmin**
 
 ## بروزرسانی سیستم
 
