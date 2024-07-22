@@ -67,6 +67,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/apapar/h-ui-warp/main/ssl.sh -
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/apapar/h-ui-warp/main/install.sh)
 ```
+پیشنهاد ما در زمان نصب انتخاب گزینه  4. Install H UI (systemd) می باشد<br>
 توجه نمایید برای راه اندازی هسته هیستریا2 باید از داخل پنل، قسمت مدیریت هیستریا<br>
 گزینه های Obfuscation و TLS را تکمیل نمایید
 
