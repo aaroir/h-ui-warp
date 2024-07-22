@@ -97,19 +97,22 @@ wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh w
 ابتدا یک فایل پشتیبان از کاربران تهیه کنید، سپس نسخه جدید را نصب کنید
 
 
-## بهینه سازی عملکرد
+## بهینه سازی عملکرد (اختیاری)
 
-- میتوانید یک کرون ری استارت تنظیم کنید
+**تنظیم کرون برای ری استارت اتوماتیک سرور**
+این عملیات باعث کاهش فشار بر روی منابع سرور می شود
 
+وارد لیست کرون جابز سرور شوید :
+    ```bash
+  sudo crontab -u root -e
+    ```
+کد زیر را اضافه کنید و ذخیره کنید
     ```bash
     0 4 * * * /sbin/reboot
     ```
-
-- میتوانید یک شتابدهنده شبکه نصب کنید
-    - [TCP Brutal](https://github.com/apernet/tcp-brutal) (توصیه شده)
-    - [teddysun/across#bbrsh](https://github.com/teddysun/across#bbrsh)
-    - [Chikage0o0/Linux-NetSpeed](https://github.com/ylx2016/Linux-NetSpeed)
-    - [ylx2016/Linux-NetSpeed](https://github.com/ylx2016/Linux-NetSpeed)
+    راهنما : کد بالای به معنای ری استارت سرور هر روزه ساعت 4 صبح می باشد<br>
+    در صورتی که میخواهید کد دیگری تولید کنید از این سایت کمک بگیرید<br>
+    https://crontab.cronhub.io/
 
 ## داکیومنت هیستریا2
 
