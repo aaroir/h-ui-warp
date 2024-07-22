@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://github.com/jonssonyan/h-ui"><img src="./docs/images/head-cover.png" alt="H UI" width="150" /></a>
+<a href="https://github.com//apapar/h-ui-warp"><img src="./docs/images/head-cover.png" alt="H UI" width="150" /></a>
 
 <h1 align="center">H UI</h1>
 
@@ -26,108 +26,55 @@ Just the panel for Hysteria2
 
 
 - سبک وزن، استفاده کم از منابع، نصب آسان
- - نظارت کامل بر وضعیت سیستم و Hysteria2 
+- نظارت کامل بر وضعیت سیستم و Hysteria2 
 - اعمال محدودیت حجمی ، تاریخ و تعداد دستگاه برای کاربران
- - بازنشانی حجم مصرفی کاربران
+- بازنشانی حجم مصرفی کاربران
 - تهیه پشتیبان از کاربران
- - مدیریت تنظیمات Hysteria2 و نسخه های Hysteria2
- - تغییر آسان پورت اتصال و ضریب مصرفی ترافیک
+- مدیریت تنظیمات Hysteria2 و نسخه های Hysteria2
+- تغییر آسان پورت اتصال و ضریب مصرفی ترافیک
 - صفحه نمایش گزارش های سیستم و گزارش‌های Hysteria2
- - پشتیبانی از زبان های فارسی ، English & 简体中文
- - طراحی واکنشگرا، پشتیبانی از حالت شب، تم های صفحه سفارشی
- - ویژگی های بیشتر در انتظار شما برای کشف
+- پشتیبانی از زبان های فارسی ، English & 简体中文
+- طراحی واکنشگرا، پشتیبانی از حالت شب، تم های صفحه سفارشی
+- ویژگی های بیشتر در انتظار شما برای کشف
 
 ## سیستم عامل مورد نیاز
-
-CentOS 8+/Ubuntu 20+/Debian 11+
-
-CPU: x86_64/amd64 arm64/aarch64
-
+<p align="left">
+CentOS 8+/Ubuntu 20+/Debian 11+<br>
+CPU: x86_64/amd64 arm64/aarch64<br>
 RAM: ≥ 256MB
+</p>
 
-## نصب
+### نصب
 
-### نصب سریع (پیشنهادی)
-
+**بروزرسانی سیستم**
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install.sh)
+apt update
 ```
 
-### Docker
-
-1. نصب داکر
-
-   https://docs.docker.com/engine/install/
-
-   ```bash
-   bash <(curl -fsSL https://get.docker.com)
-   ```
-
-2. راه اندازی
-
-   ```bash
-   docker pull jonssonyan/h-ui
-
-   docker run -d --cap-add=NET_ADMIN \
-     --name h-ui --restart always \
-     --network=host \
-     -v /h-ui/bin:/h-ui/bin \
-     -v /h-ui/data:/h-ui/data \
-     -v /h-ui/export:/h-ui/export \
-     -v /h-ui/logs:/h-ui/logs \
-     jonssonyan/h-ui
-   ```
-
-   تنظیم پورت پنل (8081 پیشنهادی)
-
-   ```bash
-   docker run -d --cap-add=NET_ADMIN \
-     --name h-ui --restart always \
-     --network=host \
-     -v /h-ui/bin:/h-ui/bin \
-     -v /h-ui/data:/h-ui/data \
-     -v /h-ui/export:/h-ui/export \
-     -v /h-ui/logs:/h-ui/logs \
-     jonssonyan/h-ui \
-     ./h-ui -p 8081
-   ```
-
-   تنظیم منطقه زمانی، پیش فرض Asia/Tehran
-
-   ```bash
-   docker run -d --cap-add=NET_ADMIN \
-     --name h-ui --restart always \
-     --network=host \
-     -e TZ=Asia/Tehran \
-     -v /h-ui/bin:/h-ui/bin \
-     -v /h-ui/data:/h-ui/data \
-     -v /h-ui/export:/h-ui/export \
-     -v /h-ui/logs:/h-ui/logs \
-     jonssonyan/h-ui
-   ```
-
-حذف پنل
-
+**دریافت سریع گواهی ssl (اختیاری)**
 ```bash
-docker rm -f h-ui
-docker rmi jonssonyan/h-ui
-rm -rf /h-ui
+bash <(curl -Ls https://raw.githubusercontent.com/apapar/h-ui-warp/main/ssl.sh --ipv4)
 ```
 
-### systemd
-
-دانلود فایل پنل: https://github.com/jonssonyan/h-ui/releases
-
+**نصب پنل هیستریا2**
 ```bash
-mkdir -p /usr/local/h-ui/
-curl -fsSL https://github.com/jonssonyan/h-ui/releases/latest/download/h-ui-linux-amd64 -o /usr/local/h-ui/h-ui && chmod +x /usr/local/h-ui/h-ui
-curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/h-ui.service -o /etc/systemd/system/h-ui.service
-# پورت پنل، 8081 پیشنهادی
-# sed -i "s|^ExecStart=.*|ExecStart=/usr/local/h-ui/h-ui -p 8081|" "/etc/systemd/system/h-ui.service"
-systemctl daemon-reload
-systemctl enable h-ui
-systemctl restart h-ui
+bash <(curl -fsSL https://raw.githubusercontent.com/apapar/h-ui-warp/main/install.sh)
 ```
+توجه نمایید برای راه اندازی هسته هیسترا باید از داخل پنل، قسمت مدیریت هیستریا<br>
+گزینه های Obfuscation و TLS را تکمیل نمایید
+
+**نصب وارپ بصورت پروکسی (پیشنهادی)**
+```bash
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh w
+```
+راهنمای نصب وارپ : <br>
+در مرحله انتخاب پورت پیشنهاد میشود  اینتر برنید و از پورت پیش فرض استفاده کنید<br>
+در مراحل بعد گزینه warp+ را انتخاب کنید<br>
+از ربات تلگرامی @generatewarpplusbot یک کلید دریافت و در این قسمت جایگزاری کنید<br>
+اگر مراحل درست طی شود با این پیام مواجه می شوید<br>
+ Local Socks5: 127.0.0.1:40000(پورت ممکن است متفاوت باشد)<br>
+حال میتوانید در پنل هیستریا یک خروجی ساکس5 بر روی این آیپی و پورت تعریف کنید
+
 
 حذف پنل
 
@@ -145,9 +92,6 @@ rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
 
 ابتدا یک فایل پشتیبان از کاربران تهیه کنید، سپس نسخه جدید را نصب کنید
 
-## داکیومنت
-
-[فارسی > FAQ](./docs/FAQ.md)
 
 ## بهینه سازی عملکرد
 
@@ -167,37 +111,6 @@ rm -rf /etc/systemd/system/h-ui.service /usr/local/h-ui/
 
 https://v2.hysteria.network/docs/getting-started/3rd-party-apps/
 
-## توسعه سیستم
-
-Go >= 1.20, Node.js >= 18.12.0
-
-- frontend
-
-   ```bash
-   cd frontend
-   pnpm install
-   npm run dev
-   ```
-
-- backend
-
-   ```bash
-   go run main.go
-   ```
-
-## ساختن
-
-- frontend
-
-   ```bash
-   npm run build:prod
-   ```
-
-- backend
-
-  Windows: [build.bat](build.bat)
-
-  Mac/Linux: [build.sh](build.sh)
 
 ## یوتوب سازنده سیستم
 
